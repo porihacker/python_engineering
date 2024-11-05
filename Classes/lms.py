@@ -39,15 +39,25 @@ class Library:
     
 
 
-    def addBook(self, book):
-        for i in self.books:
+    def addBook(self):
+       title=input("Enter book name: ")
+       author=input("Enter book author: ")
+       isbn=input("Enter book isbn: ")
 
-            if i.isbn==book.isbn:
-                print("Book is already in  the library")
-                return
+       for book in self.books:
+           if isbn==book.isbn:
+               print(f"The book with this {isbn} already exist")
+               return
+    
+
+       new_book=Book(title,author,isbn)
+
+       self.books.append(new_book)
+       print(f"{title} has been added to the library")
             
-        self.books.append(book)
-        print("Book is added in  the library")
+               
+
+
 
         
 
@@ -60,17 +70,52 @@ class Library:
         for i , book in enumerate(self.books, 1):
             print(f"{i}) {book} ")
 
+    def check_out_book(self,isbn):
+    
+        book_to_checkout=None;
+
+        for book in self.books:
+            if book.isbn == isbn:
+                book_to_checkout=book
+                break
+        
+        if book_to_checkout:
+            print(book_to_checkout.checkout())
+            self.books.remove(book_to_checkout)
+        else:
+            print("No book with {isbn}")
+
+    def  return_book(self,isbn):
+        book_to_return=None;
+
+        for book in self.books:
+            if book.isbn == isbn:
+               
+               book_to_return=book
+        
+
+        
 
 
-newbook=Book('Steve Jobs', "Walter Isaacson", "1234ibn")
-newbook1=Book('Steve Jobs', "Walter Isaacson", "1234ibn")
-newbook2=Book('Power', "Courtney Kemp", "isbn34316q")
 
 
-rosvilleLib= Library()
-rosvilleLib.addBook(newbook)
-rosvilleLib.addBook(newbook1)
-rosvilleLib.addBook(newbook2)
-rosvilleLib.showBooks()
+
+
+
+
+
+creating_a_book=True
+
+while creating_a_book:
+   
+
+
+
+
+    rosvilleLib= Library()
+    rosvilleLib.addBook()
+    rosvilleLib.showBooks()
+ 
+
 
 
