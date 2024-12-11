@@ -16,17 +16,15 @@ graph = {
 
 
 def dfs(current, target, path=None):
-
     if path is None:
         path = []
-
+    count = 0
     path = path + [current]
-
     if current == target:
-        print("found the path")
-        print(f"the path is {path}")
-        return
 
+        print(f" path #{count} is: {path}")
+        count += 1
+        return
     for i in graph[current]:
         if i not in path:
             dfs(i, target, path)

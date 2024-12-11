@@ -1,0 +1,12 @@
+graph TD
+    A["Start solve_sudoku"] --> B{"Find empty cell"}
+    B -->|"Empty cell found"| C{"Is num valid?"}
+    B -->|"No empty cell"| D["Return True"]
+    C -->|"Yes"| E["Place number"]
+    C -->|"No"| F["Try next number"]
+    E --> G{"Recursive call"}
+    G -->|"Success"| D
+    G -->|"Failure"| H["Undo placement"]
+    H --> F
+    F -->|"All numbers tried"| I["Return False"]
+    F -->|"More numbers to try"| C
