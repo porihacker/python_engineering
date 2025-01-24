@@ -10,5 +10,4 @@ class Car:
 
 
 car1 = Car("BMW", "2010", "325")
-car1.name = "Mercedes"
 print(car1)
